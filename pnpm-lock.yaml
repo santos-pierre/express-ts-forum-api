@@ -1,6 +1,8 @@
 lockfileVersion: 5.3
 
 specifiers:
+  '@faker-js/faker': ^6.1.1
+  '@prisma/client': ^3.11.1
   '@trivago/prettier-plugin-sort-imports': ^3.2.0
   '@types/bcrypt': ^5.0.0
   '@types/cors': ^2.8.12
@@ -20,12 +22,14 @@ specifiers:
   morgan: ^1.10.0
   nodemon: ^2.0.15
   prettier: ^2.6.1
+  prisma: ^3.11.1
   ts-node: ^10.7.0
   tsconfig-paths: ^3.14.1
   typescript: ^4.6.3
   yup: ^0.32.11
 
 dependencies:
+  '@prisma/client': 3.11.1_prisma@3.11.1
   bcrypt: 5.0.1
   cors: 2.8.5
   cross-env: 7.0.3
@@ -37,6 +41,7 @@ dependencies:
   yup: 0.32.11
 
 devDependencies:
+  '@faker-js/faker': 6.1.1
   '@trivago/prettier-plugin-sort-imports': 3.2.0_prettier@2.6.1
   '@types/bcrypt': 5.0.0
   '@types/cors': 2.8.12
@@ -48,6 +53,7 @@ devDependencies:
   husky: 7.0.4
   nodemon: 2.0.15
   prettier: 2.6.1
+  prisma: 3.11.1
   ts-node: 10.7.0_ee885bc7281b682b6adbed6ae09ee090
   tsconfig-paths: 3.14.1
   typescript: 4.6.3
@@ -307,6 +313,11 @@ packages:
       '@cspotcode/source-map-consumer': 0.8.0
     dev: true
 
+  /@faker-js/faker/6.1.1:
+    resolution: {integrity: sha512-8yq1LJVGn4GY06riLddIU1LbJm15yjt46hjfkpWNpH/mqdciPOBVzicKOJxzQNrGgVHVBxcdm7sgwjI/Y19MYw==}
+    engines: {node: '>=14.0.0', npm: '>=7.0.0'}
+    dev: true
+
   /@mapbox/node-pre-gyp/1.0.9:
     resolution: {integrity: sha512-aDF3S3rK9Q2gey/WAttUlISduDItz5BU3306M9Eyv6/oS40aMprnopshtlKTykxRNIBEZuRMaZAnbrQ4QtKGyw==}
     hasBin: true
@@ -324,6 +335,29 @@ packages:
       - encoding
       - supports-color
     dev: false
+
+  /@prisma/client/3.11.1_prisma@3.11.1:
+    resolution: {integrity: sha512-B3C7zQG4HbjJzUr2Zg9UVkBJutbqq9/uqkl1S138+keZCubJrwizx3RuIvGwI+s+pm3qbsyNqXiZgL3Ir0fSng==}
+    engines: {node: '>=12.6'}
+    requiresBuild: true
+    peerDependencies:
+      prisma: '*'
+    peerDependenciesMeta:
+      prisma:
+        optional: true
+    dependencies:
+      '@prisma/engines-version': 3.11.1-1.1a2506facaf1a4727b7c26850735e88ec779dee9
+      prisma: 3.11.1
+    dev: false
+
+  /@prisma/engines-version/3.11.1-1.1a2506facaf1a4727b7c26850735e88ec779dee9:
+    resolution: {integrity: sha512-HkcsDniA4iNb/gi0iuyOJNAM7nD/LwQ0uJm15v360O5dee3TM4lWdSQiTYBMK6FF68ACUItmzSur7oYuUZ2zkQ==}
+    dev: false
+
+  /@prisma/engines/3.11.1-1.1a2506facaf1a4727b7c26850735e88ec779dee9:
+    resolution: {integrity: sha512-MILbsGnvmnhCbFGa2/iSnsyGyazU3afzD7ldjCIeLIGKkNBMSZgA2IvpYsAXl+6qFHKGrS3B2otKfV31dwMSQw==}
+    requiresBuild: true
+    dev: true
 
   /@sindresorhus/is/0.14.0:
     resolution: {integrity: sha512-9NET910DNaIPngYnLLPeg+Ogzqsi9uM4mSboU5y6p8S5DzMTVEsJZrawi+BoDNUVBa2DhJqQYUFvMDfgU062LQ==}
@@ -1676,6 +1710,15 @@ packages:
     resolution: {integrity: sha512-8UVbTBYGwN37Bs9LERmxCPjdvPxlEowx2urIL6urHzdb3SDq4B/Z6xLFCblrSnE4iKWcS6ziJ3aOYrc1kz/E2A==}
     engines: {node: '>=10.13.0'}
     hasBin: true
+    dev: true
+
+  /prisma/3.11.1:
+    resolution: {integrity: sha512-aYn8bQwt1xwR2oSsVNHT4PXU7EhsThIwmpNB/MNUaaMx5OPLTro6VdNJe/sJssXFLxhamfWeMjwmpXjljo6xkg==}
+    engines: {node: '>=12.6'}
+    hasBin: true
+    requiresBuild: true
+    dependencies:
+      '@prisma/engines': 3.11.1-1.1a2506facaf1a4727b7c26850735e88ec779dee9
     dev: true
 
   /property-expr/2.0.5:
