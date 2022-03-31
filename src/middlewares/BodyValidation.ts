@@ -1,4 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
+import { InvalidFieldErrorResponse } from 'src/resources/Error';
 import { FormErrors } from 'src/types';
 import { AnyObjectSchema, ValidationError } from 'yup';
 
@@ -24,7 +25,7 @@ const BodyValidation = (yupValidatorSchema: AnyObjectSchema, errorCode = 422) =>
                     }
                     return errors;
                 }, {});
-                res.status(errorCode).json({ errors: formattedErrors });
+                res.status(errorCode).json(new InvalidFieldErrorResponse(error.message, formattedErrors));
             }
         }
     };

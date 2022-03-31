@@ -7,6 +7,7 @@
         "dev": "cross-env NODE_ENV=development nodemon ",
         "test": "echo \"Error: no test specified\" && exit 1",
         "format": "prettier  --write \"src/**/*.ts\"",
+        "rollback": "prisma migrate reset",
         "prepare": "husky install"
     },
     "prisma": {
