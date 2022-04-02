@@ -9,6 +9,18 @@ export class ErrorResponse {
     }
 }
 
+export class UnauthorizedErrorResponse extends ErrorResponse {
+    constructor(message: string = 'Unauthorized: Are you connected ?') {
+        super(message, 401);
+    }
+}
+
+export class ForbiddenErrorResponse extends ErrorResponse {
+    constructor(message: string = 'Forbidden: Are you lost ?') {
+        super(message, 403);
+    }
+}
+
 export class NotFoundErrorResponse extends ErrorResponse {
     constructor(message: string) {
         super(message, 404);
