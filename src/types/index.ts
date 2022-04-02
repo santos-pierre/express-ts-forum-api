@@ -6,3 +6,9 @@ export type PaginationOption = {
     limit: number;
     offset: number;
 };
+
+export type UserPayload = {
+    id: number;
+    pseudo: string;
+    isAdmin: boolean;
+};
