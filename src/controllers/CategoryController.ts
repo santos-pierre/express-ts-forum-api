@@ -1,14 +1,14 @@
 import { Request, Response } from 'express';
-import Category from 'src/models/Category';
-import { ErrorResponse } from 'src/resources/Error';
-import { SuccessCollection } from 'src/resources/Success';
+import Category, { CategoryData } from 'src/models/Category';
+import { ErrorResponse, NotFoundErrorResponse } from 'src/resources/Error';
+import { Success, SuccessCollection } from 'src/resources/Success';
 
 class CategoryController {
     constructor() {}
 
     public static async index(req: Request, res: Response) {
         const { count, categories } = await Category.getAll(req.pagination);
-        res.status(200).json(new SuccessCollection(categories, count, 200));
+        return res.status(200).json(new SuccessCollection(categories, count, 200));
     }
 
     public static async show(req: Request, res: Response) {
@@ -25,17 +25,47 @@ class CategoryController {
     public static async store(req: Request, res: Response) {
         const data: { name: string } = req.validatedData;
 
-        const newCategory = await Category.create(data);
-
-        return res.json(newCategory);
+        try {
+            const newCategory = await Category.create(data);
+            return res.status(201).json(new Success(newCategory));
+        } catch (error) {
+            if (error instanceof Error) {
+                return res.status(422).json(new ErrorResponse(error.message, 422));
+            }
+        }
     }
 
-    public static update(req: Request, res: Response) {
-        res.sendStatus(501);
+    public static async update(req: Request, res: Response) {
+        const data: CategoryData = { ...req.validatedData, id: parseInt(req.params.id) };
+
+        try {
+            const updatedCategory = await Category.update({ ...data });
+
+            if (!updatedCategory) {
+                return res
+                    .status(404)
+                    .json(new NotFoundErrorResponse(`The category with the id : ${data.id} does not exist`));
+            }
+
+            return res.status(200).json(new Success(updatedCategory));
+        } catch (error) {
+            if (error instanceof Error) {
+                return res.status(422).json(new ErrorResponse(error.message, 422));
+            }
+        }
     }
 
-    public static delete(req: Request, res: Response) {
-        res.sendStatus(501);
+    public static async delete(req: Request, res: Response) {
+        const id = parseInt(req.params.id);
+
+        try {
+            await Category.destroy(id);
+            return res.sendStatus(204);
+        } catch (error) {
+            if (error instanceof Error) {
+                return res.status(404).json(new NotFoundErrorResponse(error.message));
+            }
+        }
     }
 }
 
