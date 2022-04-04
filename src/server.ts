@@ -18,3 +18,5 @@ app.use('/api', Pagination(), router);
 app.listen(PORT, () => {
     console.log(`Server Running on : ${BASE_URL}:${PORT} [${NODE_ENV}]`);
 });
+
+export default app;
