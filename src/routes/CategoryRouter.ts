@@ -1,8 +1,8 @@
 import { Router } from 'express';
-import CategoryController from 'src/controllers/CategoryController';
-import Auth from 'src/middlewares/Auth';
-import BodyValidation from 'src/middlewares/BodyValidation';
-import categoryValidator from 'src/validators/CategoryValidator';
+import CategoryController from '@/controllers/CategoryController';
+import Auth from '@/middlewares/Auth';
+import BodyValidation from '@/middlewares/BodyValidation';
+import categoryValidator from '@/validators/CategoryValidator';
 
 const CategoryRouter = Router();
 

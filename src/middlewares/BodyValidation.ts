@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
-import { InvalidFieldErrorResponse } from 'src/resources/Error';
-import { FormErrors } from 'src/types';
+import { InvalidFieldErrorResponse } from '@/resources/Error';
+import { FormErrors } from '@/types';
 import { AnyObjectSchema, ValidationError } from 'yup';
 
 const BodyValidation = (yupValidatorSchema: AnyObjectSchema, errorCode = 422) => {

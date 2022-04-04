@@ -1,7 +1,8 @@
 import { Request, Response } from 'express';
-import Category, { CategoryData } from 'src/models/Category';
-import { ErrorResponse, NotFoundErrorResponse } from 'src/resources/Error';
-import { Success, SuccessCollection } from 'src/resources/Success';
+import Category, { CategoryData } from '@/models/Category';
+import { ErrorResponse, NotFoundErrorResponse } from '@/resources/Error';
+import { Success, SuccessCollection } from '@/resources/Success';
+import db from '../models';
 
 class CategoryController {
     constructor() {}

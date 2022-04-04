@@ -1,7 +1,7 @@
 import fs from 'fs';
 import jwt, { SignOptions, VerifyOptions } from 'jsonwebtoken';
 import path from 'path';
-import { UserPayload } from 'src/types';
+import { UserPayload } from '@/types';
 
 class JWT {
     private pathPrivateKey: string = path.resolve(process.cwd(), 'private.key');

@@ -1,4 +1,4 @@
-import { FormErrors } from 'src/types';
+import { FormErrors } from '@/types';
 
 export class ErrorResponse {
     public message: string;

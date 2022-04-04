@@ -4,8 +4,8 @@
     "description": "API REST Forum",
     "main": "src/server.ts",
     "scripts": {
-        "dev": "cross-env NODE_ENV=development nodemon ",
-        "test": "dotenv -e .env.test -- prisma migrate reset && jest",
+        "dev": "cross-env NODE_ENV=development nodemon",
+        "test": "dotenv -e .env.test -- prisma migrate reset && dotenv -e .env.test jest -i --detectOpenHandles --maxWorkers=1",
         "format": "prettier  --write \"src/**/*.ts\"",
         "rollback": "prisma migrate reset",
         "prepare": "husky install"
@@ -24,6 +24,8 @@
     "license": "ISC",
     "dependencies": {
         "@prisma/client": "^3.11.1",
+        "@swc/cli": "^0.1.57",
+        "@swc/core": "^1.2.163",
         "bcrypt": "^5.0.1",
         "cors": "^2.8.5",
         "cross-env": "^7.0.3",
@@ -37,6 +39,7 @@
     },
     "devDependencies": {
         "@faker-js/faker": "^6.1.1",
+        "@swc/jest": "^0.2.20",
         "@trivago/prettier-plugin-sort-imports": "^3.2.0",
         "@types/bcrypt": "^5.0.0",
         "@types/cors": "^2.8.12",

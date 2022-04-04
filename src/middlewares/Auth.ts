@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
-import db from 'src/models';
-import { ForbiddenErrorResponse, UnauthorizedErrorResponse } from 'src/resources/Error';
-import JWT from 'src/utils/JWT';
+import db from '@/models/index';
+import { ForbiddenErrorResponse, UnauthorizedErrorResponse } from '@/resources/Error';
+import JWT from '@/utils/JWT';
 
 type AuthOptions = {
     adminRight: boolean;

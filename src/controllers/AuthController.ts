@@ -1,9 +1,9 @@
 import { Request, Response } from 'express';
 import bcrypt from 'bcrypt';
-import db from 'src/models';
-import { ErrorResponse } from 'src/resources/Error';
-import JWT from 'src/utils/JWT';
-import { Success } from 'src/resources/Success';
+import db from '@/models/index';
+import { ErrorResponse } from '@/resources/Error';
+import JWT from '@/utils/JWT';
+import { Success } from '@/resources/Success';
 
 class AuthController {
     constructor() {}

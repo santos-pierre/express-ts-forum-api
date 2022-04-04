@@ -1,5 +1,5 @@
 import { Category } from '@prisma/client';
-import { PaginationOption } from './../types';
+import { PaginationOption } from '@/types';
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime';
 import db from '.';
 
@@ -12,14 +12,11 @@ const getAll = async ({
     limit,
     offset,
 }: PaginationOption): Promise<{ count: number; categories: Category[] }> => {
-    const [count, categories] = await db.$transaction([
-        db.category.count(),
-        db.category.findMany({
-            skip: offset,
-            take: limit,
-        }),
-    ]);
-
+    const count = await db.category.count();
+    const categories = await db.category.findMany({
+        skip: offset,
+        take: limit,
+    });
     return { count, categories };
 };
 

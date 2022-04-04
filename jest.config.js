@@ -1,10 +1,14 @@
 /** @type {import('ts-jest/dist/types').InitialOptionsTsJest} */
 module.exports = {
-    preset: 'ts-jest',
+    verbose: true,
     testEnvironment: 'node',
-    roots: ['<rootDir>/src'],
     testMatch: ['**/__tests__/**/*.+(ts|tsx|js)', '**/?(*.)+(spec|test).+(ts|tsx|js)'],
     transform: {
-        '^.+\\.(ts|tsx)$': 'ts-jest',
+        '^.+\\.(ts|tsx)$': ['@swc/jest'],
     },
+    moduleNameMapper: {
+        '@/(.*)': '<rootDir>/src/$1',
+    },
+    moduleFileExtensions: ['ts', 'js'],
+    setupFiles: ['dotenv/config'],
 };

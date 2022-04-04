@@ -5,7 +5,9 @@ import router from './routes';
 import Pagination from './middlewares/Pagination';
 require('express-async-errors');
 
-config();
+if (process.env.NODE_ENV !== 'test') {
+    config();
+}
 
 const app = express();
 
@@ -15,8 +17,11 @@ const { PORT, BASE_URL, NODE_ENV } = process.env;
 
 app.use('/api', Pagination(), router);
 
-app.listen(PORT, () => {
-    console.log(`Server Running on : ${BASE_URL}:${PORT} [${NODE_ENV}]`);
+const server = app.listen(PORT, () => {
+    // Avoid Cross-Env warning in jest console.
+    if (NODE_ENV !== 'test') {
+        console.log(`Server Running on : ${BASE_URL}:${PORT} [${NODE_ENV}]`);
+    }
 });
 
-export default app;
+export { app, server };
