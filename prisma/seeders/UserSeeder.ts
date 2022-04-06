@@ -16,8 +16,8 @@ const UserSeeder = async () => {
 
         await db.user.create({
             data: {
-                pseudo: faker.name.findName(),
-                email: faker.internet.email(),
+                email: 'user@user.com',
+                pseudo: 'user',
                 password,
             },
         });

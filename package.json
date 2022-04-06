@@ -5,7 +5,8 @@
     "main": "src/server.ts",
     "scripts": {
         "dev": "cross-env NODE_ENV=development nodemon",
-        "test": "dotenv -e .env.test -- prisma migrate reset && dotenv -e .env.test jest -i --detectOpenHandles --maxWorkers=1",
+        "test:seeder": "dotenv -e .env.test -- prisma migrate reset && dotenv -e .env.test jest -i --detectOpenHandles --maxWorkers=1",
+        "test": "dotenv -e .env.test -- prisma migrate deploy && dotenv -e .env.test jest -i --detectOpenHandles --maxWorkers=1",
         "format": "prettier  --write \"src/**/*.ts\"",
         "rollback": "prisma migrate reset",
         "prepare": "husky install"

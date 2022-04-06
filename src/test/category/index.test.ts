@@ -1,10 +1,17 @@
 import db from '@/models/index';
 import request from 'supertest';
-import { app, server } from '../../server';
+import { generateCategory } from './../utils';
+import { app } from '../../server';
 
 afterAll(async () => {
+    await db.category.deleteMany({ where: {} });
+    await generateCategory(db);
     await db.$disconnect();
-    server.close();
+});
+
+beforeAll(async () => {
+    await db.category.deleteMany({ where: {} });
+    await generateCategory(db);
 });
 
 test('GET /category', async () => {
@@ -22,9 +29,3 @@ test('GET /category with limit 2', async () => {
     expect(res.body.count).toBe(5);
     expect(res.body.results.length).toBe(2);
 });
-
-// test('GET /Category', async () => {
-//     const res = await request(app).get('/api/category');
-//     expect(res.body.results).toContain({ name: 'javascript' });
-//     return expect(res.status).toBe(200);
-// });

@@ -17,11 +17,10 @@ const { PORT, BASE_URL, NODE_ENV } = process.env;
 
 app.use('/api', Pagination(), router);
 
-const server = app.listen(PORT, () => {
-    // Avoid Cross-Env warning in jest console.
-    if (NODE_ENV !== 'test') {
+if (NODE_ENV !== 'test') {
+    const server = app.listen(PORT, () => {
         console.log(`Server Running on : ${BASE_URL}:${PORT} [${NODE_ENV}]`);
-    }
-});
+    });
+}
 
-export { app, server };
+export { app };
