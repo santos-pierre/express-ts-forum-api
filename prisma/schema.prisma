@@ -11,17 +11,28 @@ datasource db {
 }
 
 model User {
-    id        Int      @id @default(autoincrement())
-    pseudo    String   @unique @db.VarChar(50)
-    email     String   @unique @db.VarChar(255)
-    password  String   @db.Char(60)
-    isAdmin   Boolean  @default(false) @db.Boolean
-    createdAt DateTime @default(now()) @db.Timestamptz()
+    id        Int       @id @default(autoincrement())
+    pseudo    String    @unique @db.VarChar(50)
+    email     String    @unique @db.VarChar(255)
+    password  String    @db.Char(60)
+    isAdmin   Boolean   @default(false) @db.Boolean
+    createdAt DateTime  @default(now()) @db.Timestamptz()
+    Subject   Subject[]
 }
 
 model Category {
-    id        Int      @id @default(autoincrement())
-    name      String   @unique @db.VarChar(50)
-    createdAt DateTime @default(now()) @db.Timestamptz()
-    updatedAt DateTime @default(now()) @updatedAt @db.Timestamptz()
+    id        Int       @id @default(autoincrement())
+    name      String    @unique @db.VarChar(50)
+    createdAt DateTime  @default(now()) @db.Timestamptz()
+    updatedAt DateTime  @default(now()) @updatedAt @db.Timestamptz()
+    subjects  Subject[]
+}
+
+model Subject {
+    id         Int        @id @default(autoincrement())
+    name       String     @db.VarChar(255)
+    content    String     @db.Text
+    author     User       @relation(fields: [userId], references: [id])
+    categories Category[]
+    userId     Int
 }
