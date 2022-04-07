@@ -12,3 +12,9 @@ export type UserPayload = {
     pseudo: string;
     isAdmin: boolean;
 };
+
+export type SubjectBodyData = {
+    name: string;
+    content: string;
+    categories: number[];
+};
